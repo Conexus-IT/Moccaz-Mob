@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mocaz/core/constants/colors.dart';
 import 'package:mocaz/routes/app_router.dart';
-import 'package:mocaz/ui/views/splash_scren/splash_scren.dart';
+import 'package:mocaz/ui/views/splash_scren/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,14 +19,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          elevation: 0,
+          elevation: 3,
+          shadowColor: appColors.black,
+
           color: appColors.white,
           centerTitle: true,
         ),
         scaffoldBackgroundColor: appColors.bgColor,
+
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SplashScren(),
+      home: SplashScreen(),
       onGenerateRoute: AppRouter.generateRoute,
     );
   }

@@ -3,21 +3,20 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mocaz/core/constants/colors.dart';
 import 'package:mocaz/core/utils/navigation_helper.dart';
 
-class SplashScren extends StatefulWidget {
-  const SplashScren({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<SplashScren> createState() => _SplashScrenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScrenState extends State<SplashScren>
+class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   AppColors appColors = AppColors();
 
   @override
   void initState() {
-    
     super.initState();
     startSplashTimer(context);
     _controller = AnimationController(vsync: this);

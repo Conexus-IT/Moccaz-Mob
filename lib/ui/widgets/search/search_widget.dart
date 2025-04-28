@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget searchWidget(appColors, size) => SizedBox(
-  height: size.height * 0.17,
+  height: 150,
   child: Card(
     color: appColors.white,
     elevation: 4,
@@ -28,7 +28,7 @@ Widget searchWidget(appColors, size) => SizedBox(
             color: appColors.purple,
 
             // minWidth: size.width / 1.3,
-            height: size.height * 0.06,
+            height: 55,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(6),
             ),

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mocaz/core/constants/colors.dart';
-import 'package:mocaz/ui/widgets/appbar/appbar.dart';
 import 'package:mocaz/ui/widgets/search/search_widget.dart';
 
-class HomeScren extends StatefulWidget {
-  const HomeScren({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomeScren> createState() => _HomeScrenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScrenState extends State<HomeScren>
+class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   AppColors appColors = AppColors();
@@ -30,17 +29,8 @@ class _HomeScrenState extends State<HomeScren>
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: SvgPicture.asset('assets/icons/logo_p.svg'),
-        actions: [
-          chatAppBarWidget(appColors),
-          favoritAppbarWidget(appColors),
-          newsAppbarWidget(appColors),
-        ],
-      ),
       body: Stack(
         children: [
           Positioned(

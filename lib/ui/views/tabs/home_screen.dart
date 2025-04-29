@@ -6,6 +6,7 @@ import 'package:mocaz/core/constants/colors.dart';
 import 'package:mocaz/data/models/car.dart';
 import 'package:mocaz/data/models/demo_car_list.dart';
 import 'package:mocaz/ui/widgets/car/car_widget.dart';
+import 'package:mocaz/ui/widgets/home_scren_widgets/carousel_slider.dart';
 import 'package:mocaz/ui/widgets/search/search_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen>
               // ignore: deprecated_member_use
               color: appColors.bgColor.withOpacity(0.8),
               child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 7, vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: 7, vertical: 10),
                 children: [
                   searchWidget(appColors, size),
                   SizedBox(height: 12),
@@ -76,6 +77,14 @@ class _HomeScreenState extends State<HomeScreen>
                         return CarCard(car: car);
                       },
                     ),
+                  ),
+
+                  SizedBox(height: 12),
+                  // padding from left on fr lang and right in ar lng
+                  Padding(
+                    padding: EdgeInsets.only(left: 7),
+                    // offere serveices  list
+                    child: CarouselSliderWidget(),
                   ),
                 ],
               ),

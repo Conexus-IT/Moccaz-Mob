@@ -53,7 +53,8 @@ class _SplashScreenState extends State<SplashScreen>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Text(
-                'Découvrez une large sélection de véhicules vérifiés, garantis jusqu’à 10 ans !',
+                '''Découvrez une large sélection de véhicules vérifiés, garantis jusqu’à \n '''
+                '''10 ans !''',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.white,

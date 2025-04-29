@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SaleScreen extends StatefulWidget {
   const SaleScreen({super.key});
@@ -25,6 +26,6 @@ class _SaleScreenState extends State<SaleScreen>
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold();
   }
 }

@@ -14,7 +14,7 @@ class CarCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250,
+      width: 240,
 
       padding: const EdgeInsets.symmetric(horizontal: 4),
 
@@ -59,7 +59,7 @@ class CarCard extends StatelessWidget {
                             ? SvgPicture.asset(
                               'assets/icons/deal.svg',
 
-                              height: 20,
+                              height: 24,
                             )
                             : Container(
                               padding: EdgeInsets.all(4),

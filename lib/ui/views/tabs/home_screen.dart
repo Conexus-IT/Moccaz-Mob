@@ -86,6 +86,33 @@ class _HomeScreenState extends State<HomeScreen>
                     // offere serveices  list
                     child: CarouselSliderWidget(),
                   ),
+                  SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      'CES VÉHICULES À VOIR',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 12),
+                  // car list
+                  SizedBox(
+                    height: 340,
+                    child: ListView.builder(
+                      physics:
+                          Platform.isAndroid ? BouncingScrollPhysics() : null,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: carList.length,
+                      itemBuilder: (context, index) {
+                        Car car = carList[index];
+                        return CarCard(car: car);
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),

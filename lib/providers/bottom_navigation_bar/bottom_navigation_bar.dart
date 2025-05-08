@@ -10,8 +10,8 @@ class BottomNavigationBarProvider extends ChangeNotifier {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    BuyScreen(),
-    SaleScreen(),
+   
+    SaleScreen(), BuyScreen(),
     AmbassadorsScreen(),
     SettingsScreen(),
   ];

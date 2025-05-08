@@ -11,7 +11,7 @@ class CarouselSliderWidget extends StatelessWidget {
     return CarouselSlider(
       items: [guaranteiWidget(), choiceWidget(), satisfiedWidget(appColors)],
       options: CarouselOptions(
-        height: 100,
+        height: 105,
         viewportFraction: 1,
 
         enlargeCenterPage: true,

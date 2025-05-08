@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen>
                 padding: EdgeInsets.symmetric(horizontal: 7, vertical: 10),
                 children: [
                   searchWidget(appColors, size),
-                  SizedBox(height: 12),
+                  SizedBox(height: 8),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
@@ -66,7 +66,10 @@ class _HomeScreenState extends State<HomeScreen>
                   SizedBox(height: 4),
                   // car list
                   SizedBox(
-                    height: 340,
+                    height:
+                        size.height < 700
+                            ? size.height * 0.45
+                            : size.height * 0.39,
                     child: ListView.builder(
                       physics:
                           Platform.isAndroid ? BouncingScrollPhysics() : null,
@@ -86,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen>
                     // offere serveices  list
                     child: CarouselSliderWidget(),
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
@@ -98,10 +101,13 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: 10),
                   // car list
                   SizedBox(
-                    height: 340,
+                    height:
+                        size.height < 700
+                            ? size.height * 0.45
+                            : size.height * 0.39,
                     child: ListView.builder(
                       physics:
                           Platform.isAndroid ? BouncingScrollPhysics() : null,

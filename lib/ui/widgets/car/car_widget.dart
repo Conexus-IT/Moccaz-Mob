@@ -13,8 +13,9 @@ class CarCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
     return Container(
-      width: 240,
+      width: size.width / 1.65,
 
       padding: const EdgeInsets.symmetric(horizontal: 4),
 
@@ -26,7 +27,7 @@ class CarCard extends StatelessWidget {
           children: [
             // Car image
             SizedBox(
-              height: 140,
+              height: size.height * 0.18,
               child: Stack(
                 children: [
                   Positioned.fill(
@@ -75,8 +76,8 @@ class CarCard extends StatelessWidget {
                             ),
                   ),
                   Positioned(
-                    height: 50,
-                    width: 50,
+                    height: size.height * 0.075,
+                    width: size.height * 0.075,
                     top: 1,
                     right: 1,
                     child: Card(
@@ -110,20 +111,20 @@ class CarCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
+
                   // Subtitle
-                  Text(
-                    car.subtitle,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
+                  // Text(
+                  //   car.subtitle,
+                  //   style: TextStyle(
+                  //     fontSize: 12,
+                  //     fontWeight: FontWeight.w500,
 
-                      fontFamily: 'Poppins',
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 8),
-
+                  //     fontFamily: 'Poppins',
+                  //   ),
+                  //   maxLines: 1,
+                  //   overflow: TextOverflow.ellipsis,
+                  // ),
+                  // const SizedBox(height: 8),
                   Row(
                     children: [
                       Expanded(
@@ -137,11 +138,11 @@ class CarCard extends StatelessWidget {
                                   size: 14,
                                   color: appColors.primaryCyan,
                                 ),
-                                SizedBox(width: 4),
+                                SizedBox(width: size.width * 0.01),
                                 Text('${car.year}', style: carAttributeStyle),
                               ],
                             ),
-                            SizedBox(height: 8),
+                            SizedBox(height: size.height * 0.011),
                             Row(
                               children: [
                                 Icon(
@@ -149,14 +150,15 @@ class CarCard extends StatelessWidget {
                                   size: 14,
                                   color: appColors.primaryCyan,
                                 ),
-                                SizedBox(width: 4),
+                                SizedBox(width: size.width * 0.01),
                                 Text(
                                   '${car.mileage} km',
                                   style: carAttributeStyle,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 8),
+                            SizedBox(height: size.height * 0.011),
                             Row(
                               children: [
                                 Icon(
@@ -164,13 +166,14 @@ class CarCard extends StatelessWidget {
                                   size: 14,
                                   color: appColors.primaryCyan,
                                 ),
-                                SizedBox(width: 4),
+                                SizedBox(width: size.width * 0.01),
                                 Text(car.fuelType, style: carAttributeStyle),
                               ],
                             ),
                           ],
                         ),
                       ),
+
                       Expanded(
                         child: Column(
                           children: [
@@ -196,7 +199,7 @@ class CarCard extends StatelessWidget {
                                   size: 14,
                                   color: appColors.primaryCyan,
                                 ),
-                                SizedBox(width: 4),
+                                SizedBox(width: size.width * 0.01),
                                 Text(
                                   car.transmission,
                                   style: carAttributeStyle,
@@ -215,7 +218,7 @@ class CarCard extends StatelessWidget {
                     ],
                   ),
 
-                  const SizedBox(height: 16),
+                  SizedBox(height: size.height * 0.02),
 
                   // Price
                   Text(

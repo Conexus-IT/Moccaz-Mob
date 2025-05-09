@@ -5,15 +5,15 @@ import 'package:mocaz/providers/bottom_navigation_bar/bottom_navigation_bar.dart
 import 'package:mocaz/ui/widgets/appbar/appbar.dart';
 import 'package:provider/provider.dart';
 
-class BottomNavigationBarScren extends StatefulWidget {
-  const BottomNavigationBarScren({super.key});
+class BottomNavigationBarScreen extends StatefulWidget {
+  const BottomNavigationBarScreen({super.key});
 
   @override
-  State<BottomNavigationBarScren> createState() =>
+  State<BottomNavigationBarScreen> createState() =>
       _BottomNavigationBarScrenState();
 }
 
-class _BottomNavigationBarScrenState extends State<BottomNavigationBarScren>
+class _BottomNavigationBarScrenState extends State<BottomNavigationBarScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   AppColors appColors = AppColors();

@@ -65,6 +65,7 @@ class _SignUpScrenState extends State<SignUpScren>
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
+                    color: Color(0xFF24005E),
                     fontFamily: 'Poppins',
                   ),
                 ),

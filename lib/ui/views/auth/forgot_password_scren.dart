@@ -18,7 +18,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return ChangeNotifierProvider<ForgotPasswordProvider>(
       create: (context) => ForgotPasswordProvider(),
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -30,7 +29,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             key: _formKey,
             child: ListView(
               children: [
-                Image.asset('assets/images/forgot_password.png', height: 240),
+                Image.asset('assets/images/forgot_password.png', height: 220),
                 const SizedBox(height: 20),
                 Text(
                   'Mot de passe oublié?',

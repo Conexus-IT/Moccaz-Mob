@@ -64,10 +64,11 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "Bienvenue à « M.OCCAZ » Venez Maintenant Pour Continuer Votre Aventure Pour Trouver la Voiture Parfaite",
+                  "Nous sélectionnons les meilleurs véhicules d’occasion pour vous",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
+                    color: Color(0xFF24005E),
                     fontWeight: FontWeight.w400,
                     fontFamily: 'Poppins',
                   ),

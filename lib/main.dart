@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SelectAuthScren(),
+      home: SplashScreen(),
       onGenerateRoute: AppRouter.generateRoute,
     );
   }

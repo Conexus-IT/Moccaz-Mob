@@ -23,14 +23,6 @@ class SelectAuthScren extends StatelessWidget {
                 children: [
                   SvgPicture.asset('assets/icons/logo_p.svg', height: 60),
                   const SizedBox(height: 8),
-                  Text(
-                    "L’occasion d’un nouveau départ",
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 14,
-                      color: Color(0xFF24005E),
-                    ),
-                  ),
                 ],
               ),
 

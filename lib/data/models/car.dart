@@ -10,10 +10,12 @@ class Car {
   final double price;
   final bool isBonDeal;
   final List<String> images; // Changed to a List
+  final List<String> carOptions;
 
   Car({
     required this.title,
     required this.subtitle,
+    required this.carOptions,
     required this.year,
     required this.power,
     required this.mileage,

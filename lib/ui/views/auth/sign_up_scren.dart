@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mocaz/core/constants/cities.dart';
 import 'package:mocaz/core/constants/colors.dart';
+import 'package:mocaz/core/utils/form_validator.dart';
 import 'package:mocaz/providers/auth/signup_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +42,7 @@ class _SignUpScrenState extends State<SignUpScren>
           backgroundColor: AppColors().bgColor,
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Form(
             key: _formKey,
             child: ListView(
@@ -84,16 +85,21 @@ class _SignUpScrenState extends State<SignUpScren>
                 ),
 
                 SizedBox(height: 5),
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    enabledBorder: outlineInputBorder(),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    hintText: "Votre nom et prénom",
-                    hintStyle: hintStyle(),
-                  ),
+                Consumer<SignupProvider>(
+                  builder:
+                      (context, value, child) => TextFormField(
+                        validator: FormValidators.validateName,
+                        controller: value.nameController,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          enabledBorder: outlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          hintText: "Votre nom et prénom",
+                          hintStyle: hintStyle(),
+                        ),
+                      ),
                 ),
                 SizedBox(height: 20),
                 RichText(
@@ -111,16 +117,21 @@ class _SignUpScrenState extends State<SignUpScren>
                   ),
                 ),
                 SizedBox(height: 5),
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    enabledBorder: outlineInputBorder(),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    hintText: "Votre adresse Email",
-                    hintStyle: hintStyle(),
-                  ),
+                Consumer<SignupProvider>(
+                  builder:
+                      (context, value, child) => TextFormField(
+                        validator: FormValidators.validateEmail,
+                        keyboardType: TextInputType.text,
+                        controller: value.emailController,
+                        decoration: InputDecoration(
+                          enabledBorder: outlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          hintText: "Votre adresse Email",
+                          hintStyle: hintStyle(),
+                        ),
+                      ),
                 ),
                 SizedBox(height: 20),
                 RichText(
@@ -135,16 +146,21 @@ class _SignUpScrenState extends State<SignUpScren>
                   ),
                 ),
                 SizedBox(height: 5),
-                TextFormField(
-                  keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                    enabledBorder: outlineInputBorder(),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    hintText: "Téléphone",
-                    hintStyle: hintStyle(),
-                  ),
+                Consumer<SignupProvider>(
+                  builder:
+                      (context, value, child) => TextFormField(
+                        validator: FormValidators.validatePhone,
+                        controller: value.phoneController,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          enabledBorder: outlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          hintText: "Téléphone",
+                          hintStyle: hintStyle(),
+                        ),
+                      ),
                 ),
                 SizedBox(height: 20),
                 RichText(
@@ -162,9 +178,10 @@ class _SignUpScrenState extends State<SignUpScren>
                 Consumer<SignupProvider>(
                   builder:
                       (context, value, child) => TextFormField(
+                        validator: FormValidators.validatePassword,
                         keyboardType: TextInputType.text,
+                        controller: value.passwordController,
                         obscureText: !value.obscureTextPassword,
-
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
                             onPressed: value.onPasswordVisibilityChanged,
@@ -201,8 +218,14 @@ class _SignUpScrenState extends State<SignUpScren>
                 Consumer<SignupProvider>(
                   builder:
                       (context, value, child) => TextFormField(
+                        validator:
+                            (data) => FormValidators.validateConfirmPassword(
+                              value.passwordController.text,
+                              data,
+                            ),
                         keyboardType: TextInputType.text,
                         obscureText: !value.obscureTextConfPassword,
+                        controller: value.confPasswordController,
 
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
@@ -324,7 +347,9 @@ class _SignUpScrenState extends State<SignUpScren>
                     elevation: 7,
                     height: 54,
 
-                    onPressed: () {},
+                    onPressed: () {
+                      FormValidators.validateForm(context, _formKey);
+                    },
                     child: Text(
                       "Créer Un Compte",
                       style: TextStyle(

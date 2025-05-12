@@ -3,6 +3,7 @@ import 'package:mocaz/core/constants/colors.dart';
 import 'package:mocaz/routes/app_router.dart';
 import 'package:mocaz/routes/navigation_service.dart';
 import 'package:mocaz/ui/views/auth/login_scren.dart';
+import 'package:mocaz/ui/views/auth/select_auth_scren.dart';
 import 'package:mocaz/ui/views/splash_scren/splash_screen.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           elevation: 3,
           shadowColor: appColors.black,
-
+          scrolledUnderElevation: 0,
           color: appColors.white,
           centerTitle: true,
         ),
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
 
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginScreen(),
+      home: SelectAuthScren(),
       onGenerateRoute: AppRouter.generateRoute,
     );
   }

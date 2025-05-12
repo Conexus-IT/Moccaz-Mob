@@ -2,10 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:mocaz/core/constants/colors.dart';
+import 'package:mocaz/core/utils/form_validator.dart';
 import 'package:mocaz/providers/auth/login_provider.dart';
 import 'package:mocaz/routes/app_router.dart';
 import 'package:mocaz/routes/app_routes.dart';
 import 'package:mocaz/routes/navigation_service.dart';
+import 'package:mocaz/ui/views/auth/forgot_password_scren.dart';
 import 'package:mocaz/ui/views/auth/sign_up_scren.dart';
 import 'package:provider/provider.dart';
 
@@ -86,16 +88,21 @@ class _LoginScreenState extends State<LoginScreen>
                   ),
                 ),
                 SizedBox(height: 5),
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    enabledBorder: outlineInputBorder(),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    hintText: "Votre adresse Email",
-                    hintStyle: hintStyle(),
-                  ),
+                Consumer<LoginProvider>(
+                  builder:
+                      (context, value, child) => TextFormField(
+                        validator: FormValidators.validateEmail,
+                        controller: value.emailController,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          enabledBorder: outlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          hintText: "Votre adresse Email",
+                          hintStyle: hintStyle(),
+                        ),
+                      ),
                 ),
                 SizedBox(height: 20),
                 RichText(
@@ -113,6 +120,8 @@ class _LoginScreenState extends State<LoginScreen>
                 Consumer<LoginProvider>(
                   builder:
                       (context, value, child) => TextFormField(
+                        validator: FormValidators.validatePassword,
+                        controller: value.passwordController,
                         keyboardType: TextInputType.text,
                         obscureText: !value.obscureText,
 
@@ -145,7 +154,11 @@ class _LoginScreenState extends State<LoginScreen>
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      NavigationService.navigateWithAnimation(
+                        ForgotPasswordScreen(),
+                      );
+                    },
                   ),
                 ),
                 SizedBox(height: 8),
@@ -159,7 +172,9 @@ class _LoginScreenState extends State<LoginScreen>
                     elevation: 7,
                     height: 54,
 
-                    onPressed: () {},
+                    onPressed: () {
+                      FormValidators.validateForm(context, _formKey);
+                    },
                     child: Text(
                       "Se Connecter",
                       style: TextStyle(

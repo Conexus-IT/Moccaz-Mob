@@ -5,7 +5,11 @@ class SignupProvider extends ChangeNotifier {
   bool obscureTextPassword = false;
   bool obscureTextConfPassword = false;
   bool condition = false;
-
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confPasswordController = TextEditingController();
   String? _selectedCity;
 
   String? get selectedCity => _selectedCity;

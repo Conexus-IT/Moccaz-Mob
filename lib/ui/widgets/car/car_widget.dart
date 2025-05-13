@@ -4,13 +4,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mocaz/core/constants/colors.dart';
 import 'package:mocaz/core/utils/format_currency.dart';
 import 'package:mocaz/data/models/car.dart';
+import 'package:mocaz/providers/car/car_provider.dart';
 import 'package:mocaz/routes/navigation_service.dart';
 import 'package:mocaz/ui/widgets/car/car_dettails.dart';
+import 'package:provider/provider.dart';
 
 class CarCard extends StatelessWidget {
   final Car car;
+  CarProvider carProvider;
 
-  CarCard({Key? key, required this.car}) : super(key: key);
+  CarCard({Key? key, required this.car, required this.carProvider})
+    : super(key: key);
   AppColors appColors = AppColors();
 
   @override
@@ -19,7 +23,8 @@ class CarCard extends StatelessWidget {
     return GestureDetector(
       onTap:
           () => NavigationService.navigateWithAnimation(
-            CarDetailScreen(car: car),
+            ChangeNotifierProvider.value(value:carProvider,child: CarDetailScreen(car: car)),
+           
           ),
       child: Container(
         width: size.width / 1.65,

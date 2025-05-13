@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mocaz/core/constants/cities.dart';
 import 'package:mocaz/core/constants/colors.dart';
 import 'package:mocaz/core/utils/form_validator.dart';
+import 'package:mocaz/providers/auth/login_provider.dart';
 import 'package:mocaz/providers/auth/signup_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,7 @@ class _SignUpScrenState extends State<SignUpScren>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final _formKey = GlobalKey<FormState>();
+ 
 
   @override
   void initState() {
@@ -33,6 +35,7 @@ class _SignUpScrenState extends State<SignUpScren>
 
   @override
   Widget build(BuildContext context) {
+    
     return ChangeNotifierProvider(
       create: (context) => SignupProvider(),
       child: Scaffold(

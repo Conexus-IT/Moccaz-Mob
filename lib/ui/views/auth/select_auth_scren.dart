@@ -70,8 +70,10 @@ class SelectAuthScren extends StatelessWidget {
                 text: "Inscrivez-Vous Avec Email",
                 color: Colors.deepPurple,
                 onTap:
-                    () =>
-                        NavigationService.navigateWithAnimation(SignUpScren()),
+                    () => NavigationService.navigateWithAnimation(
+                      SignUpScren(),
+                   
+                    ),
               ),
 
               // const SizedBox(height: 24),
@@ -101,6 +103,7 @@ class SelectAuthScren extends StatelessWidget {
                   onPressed:
                       () => NavigationService.navigateWithAnimation(
                         LoginScreen(),
+                      
                       ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF24005E),

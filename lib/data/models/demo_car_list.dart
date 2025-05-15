@@ -2,6 +2,7 @@ import 'package:mocaz/data/models/car.dart';
 
 List<Car> carList = [
   Car(
+    location: 'Casablanca - 20100',
     title: 'AUDI A3 III SPORTBACK',
     subtitle: 'E-TRON BUSINESS LINE S TRONIC',
     year: 2024,
@@ -14,11 +15,11 @@ List<Car> carList = [
     isBonDeal: true,
     carOptions: [
       "Rétroviseur intérieur jour/nuit automatique",
-  "Applications décoratives en Aluminium brossé mat",
-  "Inscription S line sur les ailes AV",
-  "Accoudoir central AV",
-  "Coques de rétroviseurs extérieurs couleur carrosserie",
-  "Assistant de feux de route",
+      "Applications décoratives en Aluminium brossé mat",
+      "Inscription S line sur les ailes AV",
+      "Accoudoir central AV",
+      "Coques de rétroviseurs extérieurs couleur carrosserie",
+      "Assistant de feux de route",
     ],
     images: [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQDE4cJvMUaRNtQKS6pJCi7je2_72uwO5USw&s',
@@ -32,6 +33,7 @@ List<Car> carList = [
     ],
   ),
   Car(
+    location: 'Rabat - 22100',
     title: 'BMW X1',
     subtitle: 'S-DRIVE 18D',
     year: 2023,
@@ -41,13 +43,14 @@ List<Car> carList = [
     fuelType: 'Diesel',
     isMCheck: true,
     price: 498000.00,
-    isBonDeal: false, carOptions: [
+    isBonDeal: false,
+    carOptions: [
       "Rétroviseur intérieur jour/nuit automatique",
-  "Applications décoratives en Aluminium brossé mat",
-  "Inscription S line sur les ailes AV",
-  "Accoudoir central AV",
-  "Coques de rétroviseurs extérieurs couleur carrosserie",
-  "Assistant de feux de route",
+      "Applications décoratives en Aluminium brossé mat",
+      "Inscription S line sur les ailes AV",
+      "Accoudoir central AV",
+      "Coques de rétroviseurs extérieurs couleur carrosserie",
+      "Assistant de feux de route",
     ],
     images: [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR92Zc-gESP_0bCiG-bXLGedjstOtn7fCKr_3Y6RuHVKsTtrHwtz-nz517hlprJ4Pv1CXk&usqp=CAU',
@@ -55,6 +58,7 @@ List<Car> carList = [
     ],
   ),
   Car(
+    location: 'Casablanca - 20100',
     title: 'MERCEDES-BENZ GLA 200',
     subtitle: 'PROGRESSIVE LINE',
     year: 2022,
@@ -65,13 +69,13 @@ List<Car> carList = [
     isMCheck: true,
     price: 520000.00,
     isBonDeal: true,
-     carOptions: [
+    carOptions: [
       "Rétroviseur intérieur jour/nuit automatique",
-  "Applications décoratives en Aluminium brossé mat",
-  "Inscription S line sur les ailes AV",
-  "Accoudoir central AV",
-  "Coques de rétroviseurs extérieurs couleur carrosserie",
-  "Assistant de feux de route",
+      "Applications décoratives en Aluminium brossé mat",
+      "Inscription S line sur les ailes AV",
+      "Accoudoir central AV",
+      "Coques de rétroviseurs extérieurs couleur carrosserie",
+      "Assistant de feux de route",
     ],
     images: [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR92Zc-gESP_0bCiG-bXLGedjstOtn7fCKr_3Y6RuHVKsTtrHwtz-nz517hlprJ4Pv1CXk&usqp=CAU',
@@ -79,6 +83,7 @@ List<Car> carList = [
     ],
   ),
   Car(
+    location: 'Casablanca - 20100',
     title: 'PEUGEOT 3008',
     subtitle: 'ALLURE PACK',
     year: 2021,
@@ -89,13 +94,13 @@ List<Car> carList = [
     isMCheck: false,
     price: 320000.00,
     isBonDeal: false,
-     carOptions: [
+    carOptions: [
       "Rétroviseur intérieur jour/nuit automatique",
-  "Applications décoratives en Aluminium brossé mat",
-  "Inscription S line sur les ailes AV",
-  "Accoudoir central AV",
-  "Coques de rétroviseurs extérieurs couleur carrosserie",
-  "Assistant de feux de route",
+      "Applications décoratives en Aluminium brossé mat",
+      "Inscription S line sur les ailes AV",
+      "Accoudoir central AV",
+      "Coques de rétroviseurs extérieurs couleur carrosserie",
+      "Assistant de feux de route",
     ],
     images: [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQDE4cJvMUaRNtQKS6pJCi7je2_72uwO5USw&s',
@@ -103,6 +108,7 @@ List<Car> carList = [
     ],
   ),
   Car(
+    location: 'Casablanca - 20100',
     title: 'RENAULT CLIO V',
     subtitle: 'INTENS TCE 90',
     year: 2023,
@@ -113,13 +119,13 @@ List<Car> carList = [
     isMCheck: true,
     price: 220000.00,
     isBonDeal: true,
-     carOptions: [
+    carOptions: [
       "Rétroviseur intérieur jour/nuit automatique",
-  "Applications décoratives en Aluminium brossé mat",
-  "Inscription S line sur les ailes AV",
-  "Accoudoir central AV",
-  "Coques de rétroviseurs extérieurs couleur carrosserie",
-  "Assistant de feux de route",
+      "Applications décoratives en Aluminium brossé mat",
+      "Inscription S line sur les ailes AV",
+      "Accoudoir central AV",
+      "Coques de rétroviseurs extérieurs couleur carrosserie",
+      "Assistant de feux de route",
     ],
     images: [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQDE4cJvMUaRNtQKS6pJCi7je2_72uwO5USw&s',

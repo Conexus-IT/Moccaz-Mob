@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:mocaz/core/constants/colors.dart';
+import 'package:mocaz/ui/widgets/car/sell_vehicle_modal_step_one.dart';
 
 class BuyScreen extends StatefulWidget {
   const BuyScreen({super.key});
@@ -37,14 +38,28 @@ class _BuyScreenState extends State<BuyScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _serviceCard(
+              onTap: () {
+                showModalBottomSheet(
+                  backgroundColor: AppColors().white,
+                  context: context,
+                  isScrollControlled: true,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                  builder: (context) => SellVehicleModalStepOne(),
+                );
+              },
               size: size,
               title: 'Faire racheter mon véhicule',
               description:
                   'Revendez votre véhicule en toute simplicité et au meilleur prix.',
               imagePath: 'assets/icons/black_car.png',
-              color: Colors.deepPurple,
+              color: AppColors().white,
             ),
             _serviceCard(
+              onTap: () {},
               size: size,
               title: 'Déposer une annonces',
               description:
@@ -94,52 +109,56 @@ class _BuyScreenState extends State<BuyScreen>
     required String imagePath,
     required Color color,
     required Size size,
+    required Function onTap,
   }) {
-    return SizedBox(
-      height: size.height * 0.17,
-      width: double.infinity,
-      child: Card(
-        color: AppColors().white,
-        child: Row(
-          children: [
-            Expanded(
-              child: SizedBox(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Container(height: 20, width: 5, color: color),
-                          SizedBox(width: 5),
-                          Text(
-                            title,
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.bold,
-                              fontSize: size.width * 0.04,
-                              overflow: TextOverflow.ellipsis,
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: SizedBox(
+        height: size.height * 0.17,
+        width: double.infinity,
+        child: Card(
+          color: AppColors().white,
+          child: Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Container(height: 20, width: 5, color: color),
+                            SizedBox(width: 5),
+                            Text(
+                              title,
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.bold,
+                                fontSize: size.width * 0.04,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        description,
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
+                          ],
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 5),
+                        Text(
+                          description,
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Image.asset(imagePath, width: size.width * 0.28),
-          ],
+              Image.asset(imagePath, width: size.width * 0.28),
+            ],
+          ),
         ),
       ),
     );

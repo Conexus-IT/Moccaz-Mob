@@ -1,3 +1,4 @@
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -9,18 +10,36 @@ import 'package:mocaz/providers/car/car_provider.dart';
 import 'package:mocaz/ui/widgets/car/features_widget.dart';
 import 'package:provider/provider.dart';
 
-class CarDetailScreen extends StatelessWidget {
+class CarDetailScreen extends StatefulWidget {
   final Car car;
 
   const CarDetailScreen({super.key, required this.car});
 
   @override
+  State<CarDetailScreen> createState() => _CarDetailScreenState();
+}
+
+class _CarDetailScreenState extends State<CarDetailScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((counter) {
+      CarProvider carProvider = Provider.of<CarProvider>(
+        context,
+        listen: false,
+      );
+      carProvider.renisilizeSlectedImageCounter();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     CarProvider carProvider = Provider.of<CarProvider>(context);
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(car.title),
+        title: Text(widget.car.title),
 
         actions: [
           IconButton(icon: Icon(Icons.favorite_border), onPressed: () {}),
@@ -34,8 +53,10 @@ class CarDetailScreen extends StatelessWidget {
             Stack(
               children: [
                 CarouselSlider(
+                  carouselController: carProvider.carouselSliderController,
                   options: CarouselOptions(
                     height: 200,
+
                     viewportFraction: 1.0,
                     enableInfiniteScroll: false,
                     enlargeCenterPage: false,
@@ -44,7 +65,7 @@ class CarDetailScreen extends StatelessWidget {
                         (index, reason) => carProvider.onImageChanged(index),
                   ),
                   items:
-                      car.images.map((url) {
+                      widget.car.images.map((url) {
                         return Builder(
                           builder: (BuildContext context) {
                             return ClipRRect(
@@ -80,8 +101,57 @@ class CarDetailScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      "${carProvider.slectedImageCounter} / ${car.images.length}",
+                      "${carProvider.slectedImageCounter} / ${widget.car.images.length}",
                       style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 10,
+                  top: 80,
+
+                  child: GestureDetector(
+                    onTap: () => carProvider.previousImage(),
+                    child: Container(
+                      padding: EdgeInsets.only(
+                        left: 11,
+                        top: 6,
+                        bottom: 6,
+                        right: 3,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: AppColors().white,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 10,
+                  top: 80,
+
+                  child: GestureDetector(
+                    onTap:
+                        () => carProvider.nextImage(widget.car.images.length),
+                    child: Container(
+                      padding: EdgeInsets.only(
+                        left: 7,
+                        top: 6,
+                        bottom: 6,
+                        right: 7,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: AppColors().white,
+                      ),
                     ),
                   ),
                 ),
@@ -94,16 +164,19 @@ class CarDetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  car.title,
+                  widget.car.title,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 4),
-                Text(car.subtitle, style: TextStyle(color: Colors.grey[700])),
+                Text(
+                  widget.car.subtitle,
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
                     Text(
-                      "${formatCurrency(car.price)} DHS",
+                      "${formatCurrency(widget.car.price)} DHS",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -118,7 +191,34 @@ class CarDetailScreen extends StatelessWidget {
             ),
 
             // Location
-            const SizedBox(height: 24),
+            const SizedBox(height: 8),
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/map.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              height: 50,
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.location_on, color: AppColors().primaryCyan),
+                  SizedBox(width: 8),
+                  Text(
+                    widget.car.location,
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: AppColors().purple,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
 
             // Characteristics Box
             Container(
@@ -140,34 +240,37 @@ class CarDetailScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 6),
+                  Divider(),
+
+                  const SizedBox(height: 8),
                   Wrap(
                     spacing: 16,
                     runSpacing: 12,
                     children: [
                       _buildSpec(
                         "Année",
-                        car.year.toString(),
+                        widget.car.year.toString(),
                         Icons.calendar_today_outlined,
                       ),
                       _buildSpec(
                         "Puissance fiscal",
-                        car.power.toString(),
+                        widget.car.power.toString(),
                         Icons.speed,
                       ),
                       _buildSpec(
                         "Énergie",
-                        car.fuelType,
+                        widget.car.fuelType,
                         Icons.local_gas_station,
                       ),
                       _buildSpec(
                         "Boîte de vitesse",
-                        car.transmission,
+                        widget.car.transmission,
                         Icons.settings,
                       ),
                       _buildSpec(
                         "Kilométrage",
-                        car.mileage.toString(),
+                        widget.car.mileage.toString(),
                         Icons.speed_outlined,
                       ),
                     ],
@@ -176,7 +279,7 @@ class CarDetailScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
 
             // Download Button
             SizedBox(
@@ -201,11 +304,42 @@ class CarDetailScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 15),
+            const SizedBox(height: 20),
 
             // Equipments
-            FeaturesWidget(carOptions: car.carOptions),
+            FeaturesWidget(carOptions: widget.car.carOptions),
           ],
+        ),
+      ),
+
+      bottomSheet: Container(
+        color: AppColors().white,
+        padding: EdgeInsets.all(20),
+        child: MaterialButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          height: 55,
+          color: AppColors().purple,
+          textColor: AppColors().white,
+          minWidth: double.infinity,
+          onPressed: () {},
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/icons/vendeur.svg'),
+              SizedBox(width: 10),
+              Text(
+                'Contacter un Vendeur',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  color: AppColors().white,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

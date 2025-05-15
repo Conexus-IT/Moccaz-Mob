@@ -20,7 +20,15 @@ class _FeaturesWidgetState extends State<FeaturesWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          color: Color(0xFFEBEBEB),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12),
+              topRight: Radius.circular(12),
+              bottomLeft: Radius.circular(_isExpanded ? 0 : 12),
+              bottomRight: Radius.circular(_isExpanded ? 0 : 12),
+            ),
+            color: Color(0xFFEBEBEB),
+          ),
           child: Row(
             children: [
               Padding(
@@ -91,7 +99,14 @@ class _FeaturesWidgetState extends State<FeaturesWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  color: Color(0xFFEBEBEB),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFEBEBEB),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(_isExpanded ? 12 : 0),
+                      bottomRight: Radius.circular(_isExpanded ? 12 : 0),
+                    ),
+                  ),
+
                   width: double.infinity,
                   child: TextButton(
                     onPressed: () {},
@@ -101,7 +116,7 @@ class _FeaturesWidgetState extends State<FeaturesWidget> {
               ],
             )
             : SizedBox(),
-        SizedBox(height: 20),
+        SizedBox(height: 100),
       ],
     );
   }

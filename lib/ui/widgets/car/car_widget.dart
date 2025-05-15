@@ -23,8 +23,10 @@ class CarCard extends StatelessWidget {
     return GestureDetector(
       onTap:
           () => NavigationService.navigateWithAnimation(
-            ChangeNotifierProvider.value(value:carProvider,child: CarDetailScreen(car: car)),
-           
+            ChangeNotifierProvider.value(
+              value: carProvider,
+              child: CarDetailScreen(car: car),
+            ),
           ),
       child: Container(
         width: size.width / 1.65,

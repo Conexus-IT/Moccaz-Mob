@@ -6,7 +6,9 @@ class Car {
   final int mileage;
   final String transmission;
   final String fuelType;
+  String location;
   final bool isMCheck;
+
   final double price;
   final bool isBonDeal;
   final List<String> images; // Changed to a List
@@ -14,6 +16,7 @@ class Car {
 
   Car({
     required this.title,
+    required this.location,
     required this.subtitle,
     required this.carOptions,
     required this.year,

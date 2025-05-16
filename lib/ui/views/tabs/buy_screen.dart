@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:mocaz/core/constants/colors.dart';
+import 'package:mocaz/ui/widgets/car/appointment_form_modal.dart';
 import 'package:mocaz/ui/widgets/car/sell_vehicle_modal_step_one.dart';
 
 class BuyScreen extends StatefulWidget {
@@ -336,7 +337,19 @@ class _BuyScreenState extends State<BuyScreen>
 
                   backgroundColor: AppColors().purple,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                    backgroundColor: AppColors().white,
+                    context: context,
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                    ),
+                    builder: (context) => AppointmentFormModal(),
+                  );
+                },
                 child: Text(
                   'Prendre RDV',
                   style: TextStyle(

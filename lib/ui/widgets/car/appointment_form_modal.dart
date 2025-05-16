@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mocaz/core/constants/colors.dart';
+import 'package:mocaz/core/utils/decoration.dart';
 import 'package:mocaz/providers/car/appointment_provider.dart';
 import 'package:mocaz/routes/navigation_service.dart';
 import 'package:provider/provider.dart';
@@ -12,16 +13,6 @@ class AppointmentFormModal extends StatefulWidget {
 
 class _AppointmentFormModalState extends State<AppointmentFormModal> {
   final _formKey = GlobalKey<FormState>();
-
-  InputDecoration _inputDecoration(String hint) {
-    return InputDecoration(
-      hintText: hint,
-      filled: true,
-      fillColor: Colors.grey[100],
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-      contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +87,7 @@ class _AppointmentFormModalState extends State<AppointmentFormModal> {
                             onChanged: appointmentProvider.onBranchChanged,
                             validator:
                                 (val) => val == null ? 'Champ requis' : null,
-                            decoration: _inputDecoration("Succursale"),
+                            decoration: inputDecoration("Succursale"),
                           ),
                 ),
                 SizedBox(height: 16),
@@ -118,7 +109,7 @@ class _AppointmentFormModalState extends State<AppointmentFormModal> {
                   builder:
                       (context, appointmentProvider, child) => TextFormField(
                         controller: appointmentProvider.nameController,
-                        decoration: _inputDecoration("Saisir votre nom"),
+                        decoration: inputDecoration("Saisir votre nom"),
                         validator:
                             (val) =>
                                 val == null || val.isEmpty
@@ -145,7 +136,7 @@ class _AppointmentFormModalState extends State<AppointmentFormModal> {
                   builder:
                       (context, appointmentProvider, child) => TextFormField(
                         controller: appointmentProvider.firstNameController,
-                        decoration: _inputDecoration("Saisir votre prénom"),
+                        decoration: inputDecoration("Saisir votre prénom"),
                         validator:
                             (val) =>
                                 val == null || val.isEmpty
@@ -172,7 +163,7 @@ class _AppointmentFormModalState extends State<AppointmentFormModal> {
                   builder:
                       (context, appointmentProvider, child) => TextFormField(
                         controller: appointmentProvider.emailController,
-                        decoration: _inputDecoration("Votre email"),
+                        decoration: inputDecoration("Votre email"),
                         keyboardType: TextInputType.emailAddress,
                       ),
                 ),
@@ -195,7 +186,7 @@ class _AppointmentFormModalState extends State<AppointmentFormModal> {
                   builder:
                       (context, appointmentProvider, child) => TextFormField(
                         controller: appointmentProvider.phoneController,
-                        decoration: _inputDecoration("Saisir Votre Téléphone"),
+                        decoration: inputDecoration("Saisir Votre Téléphone"),
                         keyboardType: TextInputType.phone,
                         validator:
                             (val) =>
@@ -207,14 +198,11 @@ class _AppointmentFormModalState extends State<AppointmentFormModal> {
                 SizedBox(height: 16),
 
                 // Date et Heure RDV
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Date et Heure RDV",
-                    style: TextStyle(
-                      color: AppColors().purple,
-                      fontWeight: FontWeight.w600,
-                    ),
+                Text(
+                  "Date et Heure RDV",
+                  style: TextStyle(
+                    color: AppColors().purple,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 SizedBox(height: 6),
@@ -224,7 +212,7 @@ class _AppointmentFormModalState extends State<AppointmentFormModal> {
                         controller: appointmentProvider.dateTimeController,
                         readOnly: true,
                         onTap: () => appointmentProvider.pickDateTime(context),
-                        decoration: _inputDecoration(
+                        decoration: inputDecoration(
                           "mm / dd / yyyy , -- : -- --",
                         ).copyWith(
                           suffixIcon: Icon(
@@ -305,13 +293,4 @@ class _AppointmentFormModalState extends State<AppointmentFormModal> {
       ),
     );
   }
-
-  TextStyle hintStyle() =>
-      TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w300);
-
-  TextStyle labelStyle() => TextStyle(
-    color: AppColors().black,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w600,
-  );
 }

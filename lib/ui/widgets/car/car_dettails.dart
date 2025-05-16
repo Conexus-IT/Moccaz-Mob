@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,8 @@ import 'package:mocaz/core/constants/colors.dart';
 import 'package:mocaz/core/utils/format_currency.dart';
 import 'package:mocaz/data/models/car.dart';
 import 'package:mocaz/providers/car/car_provider.dart';
+import 'package:mocaz/routes/navigation_service.dart';
+import 'package:mocaz/ui/widgets/car/contact_seller_acreen.dart';
 import 'package:mocaz/ui/widgets/car/features_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -35,11 +36,13 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
   @override
   Widget build(BuildContext context) {
     CarProvider carProvider = Provider.of<CarProvider>(context);
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(widget.car.title),
+        title: Text(
+          widget.car.title,
+          style: TextStyle(fontFamily: 'Poppins', fontSize: 19),
+        ),
 
         actions: [
           IconButton(icon: Icon(Icons.favorite_border), onPressed: () {}),
@@ -323,7 +326,10 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
           color: AppColors().purple,
           textColor: AppColors().white,
           minWidth: double.infinity,
-          onPressed: () {},
+          onPressed:
+              () => NavigationService.navigateWithAnimation(
+                ContactSellerAcreen(),
+              ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

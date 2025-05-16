@@ -9,6 +9,18 @@ class AppointmentProvider extends ChangeNotifier {
   final TextEditingController dateTimeController = TextEditingController();
 
   String? selectedBranch = 'Succursale Bandeong';
+
+  // this var for radio botton for yes or no
+  String _isCheked = 'YES';
+
+  // those checkbox variables for offres widget
+
+  bool assurance = true;
+  bool guarantees = true;
+  bool assistance = true;
+  bool finance = true;
+
+  String get isCheked => _isCheked;
   final List<String> branches = [
     'Succursale Bandeong',
     'Succursale Casablanca',
@@ -46,6 +58,39 @@ class AppointmentProvider extends ChangeNotifier {
 
   void onBranchChanged(String? newBranch) {
     selectedBranch = newBranch;
+    notifyListeners();
+  }
+
+  onRadioBottonChanged(String? value, ScrollController? scrollController) {
+    _isCheked = value!;
+    notifyListeners();
+
+    if (scrollController != null) {
+      scrollController.animateTo(
+        scrollController.offset + 240, // Scrolls down by 300 pixels
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  onAssuranceChecked(bool value) {
+    assurance = value;
+    notifyListeners();
+  }
+
+  onGuaranteesChecked(bool value) {
+    guarantees = value;
+    notifyListeners();
+  }
+
+  onAssistanceChecked(bool value) {
+    assistance = value;
+    notifyListeners();
+  }
+
+  onFinanceChecked(bool value) {
+    finance = value;
     notifyListeners();
   }
 }

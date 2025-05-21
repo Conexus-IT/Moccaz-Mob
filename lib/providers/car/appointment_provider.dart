@@ -67,7 +67,7 @@ class AppointmentProvider extends ChangeNotifier {
 
     if (scrollController != null) {
       scrollController.animateTo(
-        scrollController.offset + 240, // Scrolls down by 300 pixels
+        scrollController.offset + 180, // Scrolls down by 300 pixels
         duration: Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );

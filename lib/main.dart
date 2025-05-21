@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mocaz/core/constants/colors.dart';
+import 'package:mocaz/providers/car/car_provider.dart';
 import 'package:mocaz/routes/app_router.dart';
 import 'package:mocaz/routes/navigation_service.dart';
 import 'package:mocaz/ui/views/auth/login_scren.dart';
 import 'package:mocaz/ui/views/auth/select_auth_scren.dart';
 import 'package:mocaz/ui/views/splash_scren/splash_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context)=>CarProvider())
+    ],
+    child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

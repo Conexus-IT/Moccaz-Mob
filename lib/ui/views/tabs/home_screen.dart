@@ -38,9 +38,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return ChangeNotifierProvider(
-      create: (context) => CarProvider(),
-      child: Scaffold(
+    return Scaffold(
         body: Stack(
           children: [
             Positioned(
@@ -147,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ],
         ),
-      ),
+     
     );
   }
 }
